@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header.js";
 import "components/Appointment/styles.scss";
 
-
+// helper function
 const formatAppointment = function (time) {
   if (!time) {
     return "No Appointments";
