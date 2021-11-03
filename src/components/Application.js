@@ -25,7 +25,6 @@ export default function Application(props) {
       axios.get('/api/appointments'),
       axios.get('/api/interviewers')
     ]).then((all) => {
-      console.log(all[2].data)
       setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     });
   }, [])
@@ -57,7 +56,6 @@ export default function Application(props) {
   }
 
   function cancelInterview(id) {
-    console.log("ID AND INTERVIEW", id)
     const appointment = {
       ...state.appointments[id],
       interview: null

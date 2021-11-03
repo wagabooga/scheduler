@@ -6,13 +6,9 @@ import useVisualMode from "hooks/useVisualMode.js";
 
 import "components/Appointment/styles.scss";
 import Form from "./Form.js";
-<<<<<<< Updated upstream
-
-=======
 import Status from "./Status.js";
 import cancelInterview from "../Application"
 import Confirm from "./Confirm.js";
->>>>>>> Stashed changes
 // helper function
 const formatAppointment = function (time) {
   if (!time) {
@@ -57,7 +53,6 @@ export default function Appointment(props) {
     transition(DELETING)
     cancelInterview(id).then(() => { transition(EMPTY) })
   }
-  console.log("mode:", mode)
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -71,7 +66,7 @@ export default function Appointment(props) {
       )}
       {mode === CREATE && (
         <Form onCancel={back}
-          onSave={save}
+          onSave={(name, interviewer) => {save(name, interviewer)}}
           interviewers={props.interviewers}
         />
       )}
