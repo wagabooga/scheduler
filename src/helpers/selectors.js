@@ -18,14 +18,11 @@ export function getInterviewersByDay(state, dayName) {
   if (!dayData) {
     return result
   }
-  let appointmentIDs = dayData["appointments"]
-  for (let appointmentID of appointmentIDs) {
-    let appointment = state.appointments[parseInt(appointmentID)]
-    if (appointment["interview"]) {
-      const interviewerID = parseInt(appointment["interview"].interviewer)
-      result.push(state.interviewers[interviewerID])
-    }
-  }
+  let interviewerIDs = dayData.interviewers
+  for (const id of interviewerIDs ) {
+    result.push(state.interviewers[id])
+  } 
+  console.log("result", result)
   return result
 }
 
