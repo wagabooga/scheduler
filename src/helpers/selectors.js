@@ -22,7 +22,7 @@ export function getInterviewersByDay(state, dayName) {
   for (const id of interviewerIDs ) {
     result.push(state.interviewers[id])
   } 
-  console.log("result", result)
+
   return result
 }
 
