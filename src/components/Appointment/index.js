@@ -6,13 +6,9 @@ import useVisualMode from "hooks/useVisualMode.js";
 
 import "components/Appointment/styles.scss";
 import Form from "./Form.js";
-<<<<<<< Updated upstream
-
-=======
 import Status from "./Status.js";
 import cancelInterview from "../Application"
 import Confirm from "./Confirm.js";
->>>>>>> Stashed changes
 // helper function
 const formatAppointment = function (time) {
   if (!time) {
