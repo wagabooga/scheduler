@@ -9,6 +9,10 @@ import Form from "./Form.js";
 import Status from "./Status.js";
 import cancelInterview from "../Application"
 import Confirm from "./Confirm.js";
+import Error from "./Error.js";
+
+
+
 // helper function
 const formatAppointment = function (time) {
   if (!time) {
@@ -27,7 +31,8 @@ const SAVING = "SAVING";
 const CONFIRM = "CONFIRM";
 const DELETING = "DELETING";
 const EDITING = "EDITING";
-
+const ERROR_SAVE = "ERROR_SAVE"
+const ERROR_DELETE = "ERROR_DELETE"
 export default function Appointment(props) {
   const bookInterview = props.bookInterview
   const cancelInterview = props.cancelInterview
@@ -44,6 +49,7 @@ export default function Appointment(props) {
     transition(SAVING)
     bookInterview(props.id, interview)
       .then(() => { transition(SHOW) })
+      .catch(() => {transition(ERROR_SAVE, true)})
   }
 
   function transitionToConfirm() {
@@ -52,8 +58,10 @@ export default function Appointment(props) {
 
 
   function confirmDelete(id) {
-    transition(DELETING)
-    cancelInterview(id).then(() => { transition(EMPTY) })
+    transition(DELETING, true)
+    cancelInterview(id)
+    .then(() => { transition(EMPTY) })
+    .catch(() => {transition(ERROR_DELETE, true)})
   }
 
   function transitionToEditing(){
@@ -99,8 +107,12 @@ export default function Appointment(props) {
       {mode === CONFIRM && (
         <Confirm onCancel={back} onConfirm={() => { confirmDelete(props.id) }} message={"Are you sure you would like to delete?"} />
       )}
-
-
+      {mode === ERROR_SAVE && (
+        <Error message={"Could not save"} onClose={() => {back()}} />
+      )}
+      {mode === ERROR_DELETE && (
+        <Error message={"Could not delete"} onClose={() => {back()}}/>
+      )}
     </article>
   );
 }
