@@ -22,7 +22,7 @@ export default function Form(props) {
 
   function validate() {
     if (student === "" || interviewer === null) {
-      setError("suck me brett 8=======================D~~~~~~~~~");
+      setError("Please ");
       return;
     }
   
