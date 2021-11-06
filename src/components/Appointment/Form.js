@@ -22,7 +22,7 @@ export default function Form(props) {
 
   function validate() {
     if (student === "" || interviewer === null) {
-      setError("Please ");
+      setError("Please fill in both fields");
       return;
     }
   
