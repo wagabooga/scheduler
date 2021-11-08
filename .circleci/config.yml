@@ -29,7 +29,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "6e:48:ff:53:04:b8:02:88:f6:c1:24:42:f4:5a:f9:a4"
-      - checkout
+      - checkout:
       - run:
           name: Push Master to Production
           command: |
