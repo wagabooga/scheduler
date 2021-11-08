@@ -7,20 +7,12 @@ import useVisualMode from "hooks/useVisualMode.js";
 import "components/Appointment/styles.scss";
 import Form from "./Form.js";
 import Status from "./Status.js";
-import cancelInterview from "../Application"
 import Confirm from "./Confirm.js";
 import Error from "./Error.js";
 
 
 
-// helper function
-const formatAppointment = function (time) {
-  if (!time) {
-    return "No Appointments";
-  } else if (time) {
-    return `Appointment at ${time}`;
-  }
-};
+
 
 
 
@@ -33,6 +25,7 @@ const DELETING = "DELETING";
 const EDITING = "EDITING";
 const ERROR_SAVE = "ERROR_SAVE"
 const ERROR_DELETE = "ERROR_DELETE"
+
 export default function Appointment(props) {
   const bookInterview = props.bookInterview
   const cancelInterview = props.cancelInterview
