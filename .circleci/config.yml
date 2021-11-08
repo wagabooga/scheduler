@@ -9,17 +9,11 @@ jobs:
 
     steps:
       - checkout
-          - add_ssh_keys:
-        fingerprints:
-          - "6e:48:ff:53:04:b8:02:88:f6:c1:24:42:f4:5a:f9:a4"
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-    - run:
-        name: Push Master to Production
-        command: |
-          git push https://github.com/wagabooga/scheduler master:production
+      - run: npm install
       - save_cache:
           paths:
             - node_modules
@@ -31,10 +25,15 @@ jobs:
 
   working_directory: ~/client
 
-  # steps:
-
-  #   - checkout
-
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "6e:48:ff:53:04:b8:02:88:f6:c1:24:42:f4:5a:f9:a4"
+      - checkout
+      - run:
+        name: Push Master to Production
+          command: |
+            git push https://github.com/wagabooga/scheduler master:production
 
 workflows:
   version: 2
