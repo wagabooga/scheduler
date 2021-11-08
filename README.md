@@ -1,5 +1,7 @@
 # Interview Scheduler
-
+## Screenshots
+!["Default"](https://github.com/wagabooga/scheduler/blob/master/docs/Default.png?raw=true)
+!["Saving/Deleting"](https://github.com/wagabooga/scheduler/blob/master/docs/SavingDeleting.png?raw=true)
 ## Setup
 
 Install dependencies with `npm install`.
