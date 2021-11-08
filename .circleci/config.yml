@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-
     docker:
       - image: circleci/node:10.16
 
@@ -19,11 +18,12 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
-      deploy:
-  machine:
-    enabled: true
 
-  working_directory: ~/client
+  deploy:
+    machine:
+      enabled: true
+
+    working_directory: ~/client
 
     steps:
       - add_ssh_keys:
@@ -31,7 +31,7 @@ jobs:
             - "6e:48:ff:53:04:b8:02:88:f6:c1:24:42:f4:5a:f9:a4"
       - checkout
       - run:
-        name: Push Master to Production
+          name: Push Master to Production
           command: |
             git push https://github.com/wagabooga/scheduler master:production
 
@@ -49,8 +49,3 @@ workflows:
               ignore: production
           requires:
             - build
-
-
-
-
-
