@@ -1,9 +1,9 @@
 # Interview Scheduler
 ## About this app
-This App is a simple CRUD app where you can schedule interviews from a remote PSQL database. 
+This App is hosted via Netlify and is using a FREE online database thanks to Heroku.
+For this reason if you load the page and nothing appears, wait ~30 seconds and refresh the page and appointments should appear.
 Link: https://hardcore-wilson-719e0a.netlify.app/
-### Warning
-If no appointments are showing, please refresh the page and wait a couple of seconds.
+
 ## Screenshots
 
 !["Default"](https://github.com/wagabooga/scheduler/blob/master/docs/Default.png?raw=true)
